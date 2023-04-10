@@ -12,6 +12,6 @@ lint:
 	npx eslint .
 
 gendiff: 
-	node bin/gendiff.js
+	node bin/gendiff.js file1.json file2.json
 gendiff-h: 
 	node bin/gendiff.js -h
