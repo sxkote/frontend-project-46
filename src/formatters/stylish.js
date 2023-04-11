@@ -20,30 +20,29 @@ function buildComparisonText(key, value, level, sign) {
   return `${buildPrefix(level, sign)}${key}: ${formatValue(value, level)}`;
 }
 
-function formatItem(item, level = 0) {
-  switch (item.compare) {
-    case 'equal': {
-      return [buildComparisonText(item.key, item.value1, level, ' ')];
-    }
-    case 'updated': {
-      return [buildComparisonText(item.key, item.value1, level, '-'), buildComparisonText(item.key, item.value2, level, '+')];
-    }
-    case 'added':
-    case 'removed': {
-      return [buildComparisonText(item.key, item.compare === 'removed' ? item.value1 : item.value2, level, item.compare === 'removed' ? '-' : '+')];
-    }
-    case 'children': {
-      // eslint-disable-next-line no-use-before-define
-      return _.concat(`${buildPrefix(level)}${item.key}: {`, formatItems(item.children, level + 1), `${buildPrefix(level)}}`);
-    }
-    default: {
-      throw new Error(`Unrecognized compare type: ${item.compare}!`);
-    }
-  }
-}
-
 function formatItems(items, level = 0) {
-  return _.flatten(items.map((item) => formatItem(item, level)));
+  return _.flatten(items.map((item) => {
+    switch (item.compare) {
+      case 'equal': {
+        return [buildComparisonText(item.key, item.value1, level, ' ')];
+      }
+      case 'updated': {
+        return [buildComparisonText(item.key, item.value1, level, '-'), buildComparisonText(item.key, item.value2, level, '+')];
+      }
+      case 'added': {
+        return [buildComparisonText(item.key, item.value2, level, '+')];
+      }
+      case 'removed': {
+        return [buildComparisonText(item.key, item.value1, level, '-')];
+      }
+      case 'children': {
+        return _.concat(`${buildPrefix(level)}${item.key}: {`, formatItems(item.children, level + 1), `${buildPrefix(level)}}`);
+      }
+      default: {
+        throw new Error(`Unrecognized compare type: ${item.compare}!`);
+      }
+    }
+  }));
 }
 
 function formatStylish(diff) {
