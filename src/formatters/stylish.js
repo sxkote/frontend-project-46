@@ -27,12 +27,10 @@ function formatStylishItem(item, resultsArray, level = 0) {
       resultsArray.push(`${buildPrefix(level, '+')}${item.key}: ${formatStylishValue(item.value2, level)}`);
       break;
     }
-    case 'added': {
-      resultsArray.push(`${buildPrefix(level, '+')}${item.key}: ${formatStylishValue(item.value2, level)}`);
-      break;
-    }
+    case 'added':
     case 'removed': {
-      resultsArray.push(`${buildPrefix(level, '-')}${item.key}: ${formatStylishValue(item.value1, level)}`);
+      const isRemoved = item.compare === 'removed';
+      resultsArray.push(`${buildPrefix(level, isRemoved ? '-' : '+')}${item.key}: ${formatStylishValue(isRemoved ? item.value1 : item.value2, level)}`);
       break;
     }
     case 'children': {
