@@ -46,3 +46,26 @@ outputFormats.forEach((format) => {
     });
   });
 });
+
+describe.only('Gendiff HEXLET tests', () => {
+  it('Hexlet: json-plain', () => {
+    const output = fs.readFileSync(getFixturePath('hexlet/result_plain.txt'), { encoding: 'utf8' });
+    const result = gendiff(getFixturePath('hexlet/file1.json'), getFixturePath('hexlet/file2.json'), 'plain');
+    expect(result).toEqual(output);
+  });
+  it('Hexlet: json-stylish', () => {
+    const output = fs.readFileSync(getFixturePath('hexlet/result_stylish.txt'), { encoding: 'utf8' });
+    const result = gendiff(getFixturePath('hexlet/file1.json'), getFixturePath('hexlet/file2.json'), 'stylish');
+    expect(result).toEqual(output);
+  });
+  it('Hexlet: yml-stylish', () => {
+    const output = fs.readFileSync(getFixturePath('hexlet/result_stylish.txt'), { encoding: 'utf8' });
+    const result = gendiff(getFixturePath('hexlet/file1.yml'), getFixturePath('hexlet/file2.yml'), 'stylish');
+    expect(result).toEqual(output);
+  });
+  it('Hexlet: yml-plain', () => {
+    const output = fs.readFileSync(getFixturePath('hexlet/result_plain.txt'), { encoding: 'utf8' });
+    const result = gendiff(getFixturePath('hexlet/file1.yml'), getFixturePath('hexlet/file2.yml'), 'plain');
+    expect(result).toEqual(output);
+  });
+});
