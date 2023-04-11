@@ -8,16 +8,38 @@ const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__tests__', '__fixtures__', filename);
 
-describe('Gendiff tests', () => {
-  it('should be valid diff-json', () => {
-    const output = fs.readFileSync(getFixturePath('output-json.txt'), { encoding: 'utf8' });
-    const result = gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json');
+describe('Gendiff flat tests', () => {
+  let output;
+
+  beforeEach(() => {
+    output = fs.readFileSync(getFixturePath('flat/output.txt'), { encoding: 'utf8' });
+  });
+
+  it('stylish JSON diff should be valid', () => {
+    const result = gendiff(getFixturePath('flat/file1.json'), getFixturePath('flat/file2.json'), 'stylish');
     expect(result).toEqual(output);
   });
 
-  it('should be valid diff-yaml', () => {
-    const output = fs.readFileSync(getFixturePath('output-yaml.txt'), { encoding: 'utf8' });
-    const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yml'), 'json');
+  it('stylish YAML diff should be valid', () => {
+    const result = gendiff(getFixturePath('flat/file1.yaml'), getFixturePath('flat/file2.yml'), 'stylish');
+    expect(result).toEqual(output);
+  });
+});
+
+describe('Gendiff nested tests', () => {
+  let output;
+
+  beforeEach(() => {
+    output = fs.readFileSync(getFixturePath('nested/output.txt'), { encoding: 'utf8' });
+  });
+
+  it('Stylish JSON diff should be valid', () => {
+    const result = gendiff(getFixturePath('nested/file1.json'), getFixturePath('nested/file2.json'), 'stylish');
+    expect(result).toEqual(output);
+  });
+
+  it('Stylish YAML diff should be valid', () => {
+    const result = gendiff(getFixturePath('nested/file1.yaml'), getFixturePath('nested/file2.yml'), 'stylish');
     expect(result).toEqual(output);
   });
 });

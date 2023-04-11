@@ -19,6 +19,6 @@ test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
 gendiff: 
-	node bin/gendiff.js './__tests__/__fixtures__/file1.json' './__tests__/__fixtures__/file2.json'
+	node bin/gendiff.js './__tests__/__fixtures__/nested/file1.json' './__tests__/__fixtures__/nested/file2.json'
 gendiff-h: 
 	node bin/gendiff.js -h

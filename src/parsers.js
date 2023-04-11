@@ -5,19 +5,21 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 
 function normalizePath(filepath) {
-  if (filepath.includes(cwd())) {
-    return filepath;
-  }
-  return path.resolve(cwd(), filepath);
+  return filepath.includes(cwd()) ? filepath : path.resolve(cwd(), filepath);
 }
 
-export default (filepath, extension) => {
+function readFile(filepath) {
+  return fs.readFileSync(normalizePath(filepath));
+}
+
+export default (filepath) => {
+  const extension = path.extname(path.basename(filepath));
   switch (extension) {
     case '.json':
-      return JSON.parse(fs.readFileSync(normalizePath(filepath)));
+      return JSON.parse(readFile(filepath));
     case '.yaml':
     case '.yml':
-      return yaml.load(fs.readFileSync(normalizePath(filepath)));
+      return yaml.load(readFile(filepath));
     default:
       throw new Error('Unrecognized file format!');
   }
