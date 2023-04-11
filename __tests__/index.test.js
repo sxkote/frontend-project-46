@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__tests__', '__fixtures__', filename);
-const outputFormats = ['stylish', 'plain'];
+const outputFormats = ['stylish', 'plain', 'json'];
 
 describe('Gendiff flat tests', () => {
   let output;
