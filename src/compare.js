@@ -17,7 +17,7 @@ function compareValues(value1, value2) {
     return 'removed';
   }
 
-  return 'different';
+  return 'updated';
 }
 
 function compareDataKey(data1, data2, key) {

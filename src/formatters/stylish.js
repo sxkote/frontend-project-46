@@ -26,7 +26,7 @@ function formatItem(item, resultsArray, level = 0) {
       resultsArray.push(buildComparisonText(item.key, item.value1, level, ' '));
       break;
     }
-    case 'different': {
+    case 'updated': {
       resultsArray.push(buildComparisonText(item.key, item.value1, level, '-'));
       resultsArray.push(buildComparisonText(item.key, item.value2, level, '+'));
       break;
