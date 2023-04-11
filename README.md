@@ -1,5 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/sxkote/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/sxkote/frontend-project-46/actions)
+[![Node CI](https://github.com/sxkote/frontend-project-46/actions/workflows/node.js.yml/badge.svg)](https://github.com/sxkote/frontend-project-46/actions/workflows/node.js.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/da25c7f8d473aaf97b39/maintainability)](https://codeclimate.com/github/sxkote/frontend-project-46/maintainability) 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/da25c7f8d473aaf97b39/test_coverage)](https://codeclimate.com/github/sxkote/frontend-project-46/test_coverage)
 
