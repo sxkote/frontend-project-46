@@ -47,7 +47,7 @@ outputFormats.forEach((format) => {
   });
 });
 
-describe.only('Gendiff HEXLET tests', () => {
+describe('Gendiff HEXLET tests', () => {
   it('Hexlet: json-plain', () => {
     const output = fs.readFileSync(getFixturePath('hexlet/result_plain.txt'), { encoding: 'utf8' });
     const result = gendiff(getFixturePath('hexlet/file1.json'), getFixturePath('hexlet/file2.json'), 'plain');
