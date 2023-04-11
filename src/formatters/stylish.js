@@ -20,27 +20,21 @@ function buildComparisonText(key, value, level, sign) {
   return `${buildPrefix(level, sign)}${key}: ${formatValue(value, level)}`;
 }
 
-function formatItem(item, resultsArray, level = 0) {
+function formatItem(item, level = 0) {
   switch (item.compare) {
     case 'equal': {
-      resultsArray.push(buildComparisonText(item.key, item.value1, level, ' '));
-      break;
+      return [buildComparisonText(item.key, item.value1, level, ' ')];
     }
     case 'updated': {
-      resultsArray.push(buildComparisonText(item.key, item.value1, level, '-'));
-      resultsArray.push(buildComparisonText(item.key, item.value2, level, '+'));
-      break;
+      return [buildComparisonText(item.key, item.value1, level, '-'), buildComparisonText(item.key, item.value2, level, '+')];
     }
     case 'added':
     case 'removed': {
-      resultsArray.push(buildComparisonText(item.key, item.compare === 'removed' ? item.value1 : item.value2, level, item.compare === 'removed' ? '-' : '+'));
-      break;
+      return [buildComparisonText(item.key, item.compare === 'removed' ? item.value1 : item.value2, level, item.compare === 'removed' ? '-' : '+')];
     }
     case 'children': {
-      resultsArray.push(`${buildPrefix(level)}${item.key}: {`);
-      item.children.forEach((child) => formatItem(child, resultsArray, level + 1));
-      resultsArray.push(`${buildPrefix(level)}}`);
-      break;
+      // eslint-disable-next-line no-use-before-define
+      return _.concat(`${buildPrefix(level)}${item.key}: {`, formatItems(item.children, level + 1), `${buildPrefix(level)}}`);
     }
     default: {
       throw new Error(`Unrecognized compare type: ${item.compare}!`);
@@ -48,12 +42,12 @@ function formatItem(item, resultsArray, level = 0) {
   }
 }
 
+function formatItems(items, level = 0) {
+  return _.flatten(items.map((item) => formatItem(item, level)));
+}
+
 function formatStylish(diff) {
-  const resultsArray = [];
-  resultsArray.push('{');
-  diff.forEach((item) => formatItem(item, resultsArray));
-  resultsArray.push('}');
-  return resultsArray.join('\n');
+  return _.concat('{', formatItems(diff), '}').join('\n');
 }
 
 export default formatStylish;
