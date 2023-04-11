@@ -1,5 +1,5 @@
 import * as path from 'path';
-import readData from './reader.js';
+import readData from './parsers.js';
 import compareData from './compare.js';
 import formatOutput from './formatter.js';
 
