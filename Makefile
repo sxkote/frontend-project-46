@@ -1,9 +1,10 @@
 .PHONY: test
 
-install: install-deps
-
 install-deps:
 	npm ci
+
+install: install-deps
+	npx simple-git-hooks
 
 publish:
 	npm publish --dry-run
@@ -11,7 +12,13 @@ publish:
 lint:
 	npx eslint .
 
+test:
+	npm test
+
+test-coverage:
+	npm test -- --coverage --coverageProvider=v8
+
 gendiff: 
-	node bin/gendiff.js file1.json file2.json
+	node bin/gendiff.js './__tests__/__fixtures__/file1.json' './__tests__/__fixtures__/file2.json'
 gendiff-h: 
 	node bin/gendiff.js -h
