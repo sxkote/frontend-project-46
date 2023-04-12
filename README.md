@@ -27,3 +27,27 @@ Options:
   -f, --format, <type>  output format (default: "json")
   -h, --help            output usage information
 ```
+
+Supported output formats:
+
+* `stylish (default)` 
+* `plain`
+* `json`
+
+Use -f flag to set required output format. `-f, --format <type> output format`
+
+----
+
+## Examples
+
+JSON Diff:
+
+[![asciicast](https://asciinema.org/a/yqAiVHzc66gSr9Be3ASrZXnkN.svg)](https://asciinema.org/a/yqAiVHzc66gSr9Be3ASrZXnkN)
+
+YAML Diff:
+
+[![asciicast](https://asciinema.org/a/M1PIKl7XFyY371pHnunbjFWyR.svg)](https://asciinema.org/a/M1PIKl7XFyY371pHnunbjFWyR)
+
+All Options:
+
+[![asciicast](https://asciinema.org/a/Cw0UfoZqvY5qqWdcfrC8YajNX.svg)](https://asciinema.org/a/Cw0UfoZqvY5qqWdcfrC8YajNX)
