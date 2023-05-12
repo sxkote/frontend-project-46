@@ -42,12 +42,12 @@ Use -f flag to set required output format. `-f, --format <type> output format`
 
 JSON Diff:
 
-[![asciicast](https://asciinema.org/a/yqAiVHzc66gSr9Be3ASrZXnkN.svg)](https://asciinema.org/a/yqAiVHzc66gSr9Be3ASrZXnkN)
+[![asciicast](https://asciinema.org/a/584569.svg)](https://asciinema.org/a/584569)
 
 YAML Diff:
 
-[![asciicast](https://asciinema.org/a/M1PIKl7XFyY371pHnunbjFWyR.svg)](https://asciinema.org/a/M1PIKl7XFyY371pHnunbjFWyR)
+[![asciicast](https://asciinema.org/a/584570.svg)](https://asciinema.org/a/584570)
 
 All Options:
 
-[![asciicast](https://asciinema.org/a/Cw0UfoZqvY5qqWdcfrC8YajNX.svg)](https://asciinema.org/a/Cw0UfoZqvY5qqWdcfrC8YajNX)
+[![asciicast](https://asciinema.org/a/584571.svg)](https://asciinema.org/a/584571)
